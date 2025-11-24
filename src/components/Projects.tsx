@@ -18,24 +18,27 @@ export default function Projects() {
         title: "Site for BEST Eka UrFU",
         description:
           "Reusable components with Framer Motion and Tailwind for delightful interactions.",
-        tags: ["React", "Framer Motion", "Tailwind"],
-        image: "/images/projects/motion-kit.jpg",
+        tags: ["HTML", "TailwindCSS", "JavaScript"],
+        image: "/urfubestru.png",
+        link: "https://urfubest.ru",
       },
       {
         id: "p2",
         title: "Online whiteboard for BEST Eka UrFU",
         description:
           "MDX-driven blog platform with fast DX, strong typing, and clean theming.",
-        tags: ["TypeScript", "MDX", "Vite"],
-        image: "/images/projects/content-platform.jpg",
+        tags: ["Next.js", "TypeScript", "Convex", "Clerk"],
+        image: "/whiteboard.png",
+        link: "https://eka-urfu-board.vercel.app/",
       },
       {
         id: "p3",
         title: "Site for Anastasia Karmatskaya",
         description:
           "Accessible component library with tokens, theming, and usage docs.",
-        tags: ["Accessibility", "Design Tokens", "Docs"],
-        image: "/images/projects/design-system.jpg",
+        tags: ["Low-code", "Tilda"],
+        image: "/karmatskayaru.png",
+        link: "https://karmatskaya.ru/",
       },
     ],
     []
@@ -56,7 +59,10 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="projects" className="py-16 md:py-24">
+    <section
+      id="projects"
+      className="min-h-screen flex flex-col justify-center py-16 md:py-24"
+    >
       <div className="mx-auto max-w-6xl px-6">
         <motion.div
           className="mb-12"
@@ -132,7 +138,6 @@ export default function Projects() {
         <AnimatePresence>
           {active && (
             <>
-              {/* Backdrop */}
               <motion.button
                 aria-label="Close project details"
                 className="fixed inset-0 z-50 bg-black/40 md:bg-black/50"
@@ -140,29 +145,23 @@ export default function Projects() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.18 }}
-                // Клик по затемнению (на всякий случай оставим, хотя он перекрыт)
                 onClick={() => setActiveId(null)}
               />
-
-              {/* Wrapper: Убрал p-4, чтобы на мобилке было во всю ширину */}
               <motion.div
                 id={`project-${active.id}-dialog`}
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby={`project-${active.id}-title`}
-                // Вернул классы как были в оригинале (без padding) + добавил onClick
                 className="fixed inset-0 z-50 flex items-end md:items-center justify-center"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
                 transition={{ type: "tween", duration: 0.22 }}
-                onClick={() => setActiveId(null)} // 1. Закрываем при клике на пустое место
+                onClick={() => setActiveId(null)}
               >
-                {/* Card: Добавил stopPropagation */}
                 <div
-                  // Классы оригинала: w-full (на мобилке от края до края), rounded-t-3xl (скругление только сверху)
                   className="w-full md:max-w-2xl md:mx-auto bg-white rounded-t-3xl md:rounded-2xl shadow-lg overflow-hidden border border-slate-200"
-                  onClick={(e) => e.stopPropagation()} // 2. Блокируем закрытие при клике на саму карточку
+                  onClick={(e) => e.stopPropagation()}
                 >
                   {active.image ? (
                     <div className="aspect-video bg-slate-100">
@@ -187,12 +186,12 @@ export default function Projects() {
                           {active.title}
                         </h3>
                         <div className="mt-2 flex flex-wrap gap-2">
-                          {active.tags.map((t) => (
+                          {active.tags.map((technologyTitle) => (
                             <span
-                              key={t}
+                              key={technologyTitle}
                               className="text-[11px] font-medium text-[#2b2e32] bg-[#d9e5f8] px-2.5 py-1 rounded-full"
                             >
-                              {t}
+                              {technologyTitle}
                             </span>
                           ))}
                         </div>
@@ -226,8 +225,9 @@ export default function Projects() {
                         <a
                           href={active.link}
                           target="_blank"
-                          rel="noreferrer noopener"
-                          className="inline-flex items-center justify-center rounded-md bg-slate-900 text-white px-4 py-2 text-sm font-medium shadow-sm hover:bg-slate-800 transition-colors"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center rounded-md bg-[#ffdd2d] text-black px-6 py-3 text-xs font-normal shadow-sm hover:bg-[#f2d22b] transition-colors"
+                          onClick={(e) => e.stopPropagation()}
                         >
                           Visit project
                         </a>
