@@ -20,17 +20,17 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
     console.log("Form submitted:", formData);
-    // Reset form
     setFormData({ name: "", email: "", message: "" });
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24">
+    <section
+      id="contact"
+      className="min-h-screen flex items-center py-16 md:py-24"
+    >
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -149,8 +149,6 @@ export default function Contact() {
               </div>
             </div>
           </motion.div>
-
-          {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -172,7 +170,7 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-slate-900 focus:border-transparent transition-colors"
+                  className="w-full px-4 py-3 bg-[#f2f4f7] rounded-lg border border-transparent focus:bg-white focus:border-black transition-colors outline-none"
                   placeholder="Your name"
                 />
               </div>
@@ -191,7 +189,7 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-slate-900 focus:border-transparent transition-colors"
+                  className="w-full px-4 py-3 bg-[#f2f4f7] rounded-lg border border-transparent focus:bg-white focus:border-black transition-colors outline-none"
                   placeholder="your@email.com"
                 />
               </div>
@@ -210,16 +208,16 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-slate-900 focus:border-transparent transition-colors resize-none"
+                  className="w-full px-4 py-3 bg-[#f2f4f7] rounded-lg border border-transparent focus:bg-white focus:border-black transition-colors outline-none resize-none"
                   placeholder="Tell me about your project..."
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-[#ffdd2d] text-black py-3 px-6 rounded-lg font-medium  hover:bg-[#f2d22b] transition-colors focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2"
+                className="cursor-pointer w-full bg-[#ffdd2d] text-black py-3 px-6 rounded-lg font-normal  hover:bg-[#f2d22b] transition-colors focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2"
               >
-                Send Message
+                Submit
               </button>
             </form>
           </motion.div>
