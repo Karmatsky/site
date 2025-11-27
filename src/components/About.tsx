@@ -25,14 +25,17 @@ export default function About() {
               Obsessed with performance and details
             </h2>
             <p className="text-slate-700 leading-relaxed mb-4">
-              I am a frontend engineer dedicated to the craft of building clean
-              web experiences. I believe that fast load times, semantic markup,
-              and smooth animations are not just features, but essentials.
+              Frontend Engineer focused on high-performance and user-centric web
+              experiences. Specializing in TypeScript, React, and modern tooling
+              to build fast, accessible, and visually polished applications.
+              Obsessed with the details that define quality.
             </p>
             <p className="text-slate-700 leading-relaxed mb-6">
-              My workflow is centered around modern best practices: strictly
-              typed TypeScript, composable React patterns, and tooling like Vite
-              to deliver production-ready code efficiently.
+              My development process is grounded in modern best practices:
+              leveraging TypeScript for robust and maintainable code,
+              implementing composable React patterns for scalable architecture,
+              and utilizing tools like Vite to deliver production-ready code
+              efficiently.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3">
@@ -66,7 +69,7 @@ export default function About() {
               <figure className="relative aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 shadow-sm  flex items-center justify-center">
                 {!imageError ? (
                   <img
-                    src="/SK.jpg"
+                    src="/SK.webp"
                     alt="Portrait of Savely Karmatsky"
                     className="h-full w-full object-cover"
                     onError={() => setImageError(true)}
