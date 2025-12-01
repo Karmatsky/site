@@ -32,8 +32,7 @@ export default function Projects() {
       {
         id: "p3",
         title: "Site for Anastasia Karmatskaya",
-        description:
-          "Website transformation for a designer according to a new request",
+        description: "Website transformation according to a new request",
         tags: ["Low-code", "Tilda"],
         image: "/karmatskayaru.webp",
         link: "https://karmatskaya.ru/",
