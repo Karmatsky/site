@@ -16,7 +16,7 @@
   "projects-visit-button": "Open Project",
 
   "project-1-title": "Website for BEST Eka UrFU",
-  "project-1-description": "Developed a responsive website for the European student organization BEST. Responsible for UI implementation, adaptive layout, and event management features.",
+  "project-1-description": "Developed a responsive website for the European student organization BEST.",
   "project-2-title": "Online Whiteboard for BEST Eka UrFU",
   "project-2-description": "Built a real-time collaborative whiteboard using Next.js, TypeScript, and Convex. Focused on interaction speed and smooth data synchronization.",
   "project-3-title": "Website for Anastasia Karmatskaya",
