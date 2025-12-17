@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 type FormData = {
   name: string;
@@ -11,6 +12,7 @@ type FormData = {
 type FormErrors = Partial<Record<keyof FormData, string>>;
 
 export default function Contact() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -36,26 +38,24 @@ export default function Contact() {
     switch (name) {
       case "name": {
         const trimmed = value.trim();
-        if (!trimmed) return "Enter name";
-        if (trimmed.length < 2)
-          return "Name must contain at least 2 characters";
-        if (trimmed.length > 60) return "The name is too long";
+        if (!trimmed) return t("validation.name.required");
+        if (trimmed.length < 2) return t("validation.name.short");
+        if (trimmed.length > 60) return t("validation.name.long");
         return null;
       }
 
       case "email": {
         const trimmed = value.trim();
-        if (!trimmed) return "Enter email";
-        if (!emailRegex.test(trimmed)) return "Invalid email format";
+        if (!trimmed) return t("validation.email.required");
+        if (!emailRegex.test(trimmed)) return t("validation.email.invalid");
         return null;
       }
 
       case "message": {
         const trimmed = value.trim();
-        if (!trimmed) return "Enter message";
-        if (trimmed.length < 10)
-          return "The message must be at least 10 characters long";
-        if (trimmed.length > 2000) return "The message is too long";
+        if (!trimmed) return t("validation.message.required");
+        if (trimmed.length < 10) return t("validation.message.short");
+        if (trimmed.length > 2000) return t("validation.message.long");
         return null;
       }
 
@@ -100,7 +100,7 @@ export default function Contact() {
     const found = validateAll(formData);
     const hasErrors = Object.keys(found).length > 0;
     if (hasErrors) {
-      toast.error("Please check the form — there are some errors", {
+      toast.error(t("form.error-title"), {
         description: Object.values(found)[0],
       });
       focusFirstError(found);
@@ -120,22 +120,22 @@ export default function Contact() {
       });
 
       if (res.ok) {
-        toast.success("Message sent — thank you!", {
-          description: "I will contact you shortly.",
+        toast.success(t("success.title"), {
+          description: t("success.description"),
         });
         setFormData({ name: "", email: "", message: "" });
         setErrors({});
       } else {
         const data = await res.json().catch(() => null);
         console.error("Formspree error response:", data || res.statusText);
-        toast.error("Failed to send message", {
-          description: "Please try again or send an email directly",
+        toast.error(t("errors.submit-failed.title"), {
+          description: t("errors.submit-failed.description"),
         });
       }
     } catch (err) {
       console.error("Network error:", err);
-      toast.error("Network error", {
-        description: "Check the connection and try again",
+      toast.error(t("errors.network.title"), {
+        description: t("errors.network.description"),
       });
     } finally {
       setSubmitting(false);
@@ -159,15 +159,13 @@ export default function Contact() {
             viewport={{ once: true }}
           >
             <p className="text-xs uppercase tracking-widest text-slate-500 mb-3">
-              Contact
+              {t("contact-section-label")}
             </p>
             <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 mb-6">
-              Let's work together
+              {t("contact-title")}
             </h2>
             <p className="text-slate-700 leading-relaxed mb-8">
-              I'm always interested in new opportunities and exciting projects.
-              Whether you have a question or just want to say hi, I'll try my
-              best to get back to you!
+              {t("contact-description")}
             </p>
 
             <div className="space-y-4">
@@ -248,7 +246,9 @@ export default function Contact() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-slate-900">Phone</p>
+                  <p className="text-sm font-medium text-slate-900">
+                    {t("contact-phone-label")}
+                  </p>
                   <a
                     href="tel:+79122121176"
                     className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
@@ -272,7 +272,7 @@ export default function Contact() {
                   htmlFor="name"
                   className="block text-sm font-medium text-slate-700 mb-2"
                 >
-                  Name
+                  {t("contact-name-label")}
                 </label>
                 <input
                   ref={nameRef}
@@ -294,7 +294,7 @@ export default function Contact() {
                       ? "bg-[#fee0e0] border-red-500 focus:border-red-600"
                       : ""
                   }`}
-                  placeholder="Your name"
+                  placeholder={t("contact-placeholder-name")}
                 />
                 {errors.name && (
                   <p id="name-error" className="text-xs text-red-600 mt-2">
@@ -308,7 +308,7 @@ export default function Contact() {
                   htmlFor="email"
                   className="block text-sm font-medium text-slate-700 mb-2"
                 >
-                  Email
+                  {t("contact-email-label")}
                 </label>
                 <input
                   ref={emailRef}
@@ -331,7 +331,7 @@ export default function Contact() {
                       ? "bg-[#fee0e0] border-red-500 focus:border-red-600"
                       : ""
                   }`}
-                  placeholder="your@email.com"
+                  placeholder={t("contact-placeholder-email")}
                 />
                 {errors.email && (
                   <p id="email-error" className="text-xs text-red-600 mt-2">
@@ -345,7 +345,7 @@ export default function Contact() {
                   htmlFor="message"
                   className="block text-sm font-medium text-slate-700 mb-2"
                 >
-                  Message
+                  {t("contact-message-label")}
                 </label>
                 <textarea
                   ref={messageRef}
@@ -370,7 +370,7 @@ export default function Contact() {
                       ? "bg-[#fee0e0] border-red-500 focus:border-red-600"
                       : ""
                   }`}
-                  placeholder="Tell me about your project..."
+                  placeholder={t("contact-placeholder-message")}
                 />
                 <div className="flex justify-between items-center mt-2">
                   {errors.message ? (
@@ -393,7 +393,7 @@ export default function Contact() {
                   submitting ? "opacity-60 pointer-events-none" : ""
                 }`}
               >
-                {submitting ? "Sending..." : "Submit"}
+                {submitting ? t("contact-sending") : t("contact-submit")}
               </button>
             </form>
           </motion.div>

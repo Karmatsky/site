@@ -1,0 +1,74 @@
+{
+  "header-about": "About",
+  "header-projects": "Projects",
+  "header-contact": "Contact",
+
+  "about-title": "About",
+  "about-subtitle": "Obsessed with performance and details",
+  "about-description-p-1": "Frontend Engineer focused on high-performance and user-centric web experiences. Specializing in TypeScript, React, and modern tooling to build fast, accessible, and visually polished applications. Obsessed with the details that define quality.",
+  "about-description-p-2": "My development process is grounded in modern best practices: leveraging TypeScript for robust and maintainable code, implementing composable React patterns for scalable architecture, and utilizing tools like Vite to deliver production-ready code efficiently.",
+  "about-description-view-projects-button": "View Projects",
+  "about-description-contact-me-button": "Contact Me",
+
+  "projects-section-label": "Projects",
+  "projects-title": "Selected work",
+  "projects-visit-button": "Visit project",
+  "project-1-title": "Site for BEST Eka UrFU",
+  "project-1-description": "Website for a european volunteer organisation",
+  "project-2-title": "Online whiteboard for BEST Eka UrFU",
+  "project-2-description": "Real-time interactive online whiteboard",
+  "project-3-title": "Site for Anastasia Karmatskaya",
+  "project-3-description": "Website transformation according to a new request",
+
+  "contact-section-label": "Contact",
+  "contact-title": "Let's work together",
+  "contact-description": "I'm always open to new opportunities and collaborations. Whether you have a project idea or just want to say hello — feel free to reach out!",
+  "contact-phone-label": "Phone",
+  "contact-name-label": "Name",
+  "contact-email-label": "Email",
+  "contact-message-label": "Message",
+  "contact-placeholder-name": "Your name",
+  "contact-placeholder-email": "your@email.com",
+  "contact-placeholder-message": "Tell me about your project...",
+  "contact-submit": "Submit",
+  "contact-sending": "Sending...",
+  "contact-success-title": "Message sent — thank you!",
+  "contact-success-description": "I will contact you shortly.",
+  "contact-error-title": "Failed to send message",
+  "contact-error-description": "Please try again or send an email directly",
+
+  "form": {
+    "error-title": "Please check the form — there are some errors"
+  },
+  "success": {
+    "title": "Message sent — thank you!",
+    "description": "I will contact you shortly."
+  },
+  "errors": {
+    "submit-failed": {
+      "title": "Failed to send message",
+      "description": "Please try again or send an email directly"
+    },
+    "network": {
+      "title": "Network error",
+      "description": "Check the connection and try again"
+    }
+  },
+
+  "validation": {
+    "name": {
+      "required": "Enter your name",
+      "short": "Name must contain at least 2 characters",
+      "long": "The name is too long"
+    },
+    "email": {
+      "required": "Enter your email",
+      "invalid": "Invalid email format"
+    },
+    "message": {
+      "required": "Enter your message",
+      "short": "The message must be at least 10 characters long",
+      "long": "The message is too long"
+    }
+  }
+}

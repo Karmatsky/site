@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Variants } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 interface NavItem {
   name: string;
   href: string;
 }
 
-const navItems: NavItem[] = [
-  { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
-];
-
 const Header: React.FC = () => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>("");
+
+  const navItems: NavItem[] = [
+    { name: t("header-about"), href: "#about" },
+    { name: t("header-projects"), href: "#projects" },
+    { name: t("header-contact"), href: "#contact" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {

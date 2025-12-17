@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 type Project = {
   id: string;
@@ -11,28 +12,30 @@ type Project = {
 };
 
 export default function Projects() {
+  const { t } = useTranslation();
+
   const projects = useMemo<Project[]>(
     () => [
       {
         id: "p1",
-        title: "Site for BEST Eka UrFU",
-        description: "Website for a european volunteer organisation",
+        title: t("project-1-title"),
+        description: t("project-1-description"),
         tags: ["HTML", "TailwindCSS", "JavaScript"],
         image: "/urfubestru.webp",
         link: "https://urfubest.ru",
       },
       {
         id: "p2",
-        title: "Online whiteboard for BEST Eka UrFU",
-        description: "Real-time interactive online whiteboard",
+        title: t("project-2-title"),
+        description: t("project-2-description"),
         tags: ["Next.js", "TypeScript", "Convex", "Clerk"],
         image: "/whiteboard.webp",
         link: "https://eka-urfu-board.vercel.app/",
       },
       {
         id: "p3",
-        title: "Site for Anastasia Karmatskaya",
-        description: "Website transformation according to a new request",
+        title: t("project-3-title"),
+        description: t("project-3-description"),
         tags: ["Low-code", "Tilda"],
         image: "/karmatskayaru.webp",
         link: "https://karmatskaya.ru/",
@@ -69,10 +72,10 @@ export default function Projects() {
           viewport={{ once: true }}
         >
           <p className="text-xs uppercase tracking-widest text-slate-500 mb-3">
-            Projects
+            {t("projects-section-label")}
           </p>
           <h2 className="text-3xl md:text-4xl font-semibold text-slate-900">
-            Selected work
+            {t("projects-title")}
           </h2>
         </motion.div>
 
@@ -228,7 +231,7 @@ export default function Projects() {
                           className="inline-flex items-center justify-center rounded-md bg-[#ffdd2d] text-black px-6 py-3 text-xs font-normal shadow-sm hover:bg-[#f2d22b] transition-colors"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          Visit project
+                          {t("projects-visit-button")}
                         </a>
                       </div>
                     ) : null}

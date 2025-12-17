@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 export default function About() {
   const [imageError, setImageError] = useState(false);
 
+  const { t } = useTranslation();
   return (
     <section
       id="about"
@@ -19,23 +21,16 @@ export default function About() {
             viewport={{ once: true }}
           >
             <p className="text-xs uppercase tracking-widest text-slate-500 mb-3">
-              About
+              {t("about-title")}
             </p>
             <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 mb-4">
-              Obsessed with performance and details
+              {t("about-subtitle")}
             </h2>
             <p className="text-slate-700 leading-relaxed mb-4">
-              Frontend Engineer focused on high-performance and user-centric web
-              experiences. Specializing in TypeScript, React, and modern tooling
-              to build fast, accessible, and visually polished applications.
-              Obsessed with the details that define quality.
+              {t("about-description-p-1")}
             </p>
             <p className="text-slate-700 leading-relaxed mb-6">
-              My development process is grounded in modern best practices:
-              leveraging TypeScript for robust and maintainable code,
-              implementing composable React patterns for scalable architecture,
-              and utilizing tools like Vite to deliver production-ready code
-              efficiently.
+              {t("about-description-p-2")}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3">
@@ -43,13 +38,13 @@ export default function About() {
                 href="#projects"
                 className="inline-flex items-center justify-center rounded-md bg-[#ffdd2d] text-black px-6 py-3 text-xs font-normal shadow-sm hover:bg-[#f2d22b] transition-colors"
               >
-                View Projects
+                {t("about-description-view-projects-button")}
               </a>
               <a
                 href="#contact"
                 className="inline-flex items-center justify-center rounded-md border border-slate-300 text-[#126df7] px-6 py-3 text-xs font-normal hover:border-slate-400 transition-colors"
               >
-                Contact Me
+                {t("about-description-contact-me-button")}
               </a>
             </div>
           </motion.div>
