@@ -3,66 +3,68 @@
   "header-projects": "Projects",
   "header-contact": "Contact",
 
-  "about-title": "About",
-  "about-subtitle": "Obsessed with performance and details",
-  "about-description-p-1": "Frontend Engineer focused on high-performance and user-centric web experiences. Specializing in TypeScript, React, and modern tooling to build fast, accessible, and visually polished applications. Obsessed with the details that define quality.",
-  "about-description-p-2": "My development process is grounded in modern best practices: leveraging TypeScript for robust and maintainable code, implementing composable React patterns for scalable architecture, and utilizing tools like Vite to deliver production-ready code efficiently.",
+  "about-title": "About Me",
+  "about-subtitle": "Frontend developer who cares about results",
+  "about-description-p-1": "I build modern, fast, and intuitive web interfaces. I work with TypeScript, React, and the modern frontend ecosystem to turn ideas into reliable, thoughtful, and user-friendly applications. My goal is not just to write code, but to create products people enjoy using.",
+  "about-description-p-2": "I combine an engineering mindset with an eye for detail — writing clean, maintainable code, using type safety, and designing architectures that scale. I constantly learn new tools and approaches to build solutions that are fast, stable, and aesthetically refined.",
   "about-description-view-projects-button": "View Projects",
-  "about-description-contact-me-button": "Contact Me",
+  "about-description-contact-me-button": "Get in Touch",
 
   "projects-section-label": "Projects",
-  "projects-title": "Selected work",
-  "projects-visit-button": "Visit project",
-  "project-1-title": "Site for BEST Eka UrFU",
-  "project-1-description": "Website for a european volunteer organisation",
-  "project-2-title": "Online whiteboard for BEST Eka UrFU",
-  "project-2-description": "Real-time interactive online whiteboard",
-  "project-3-title": "Site for Anastasia Karmatskaya",
-  "project-3-description": "Website transformation according to a new request",
+  "projects-title": "My Work",
+  "projects-description": "A selection of projects that reflect my experience with modern frontend technologies, design precision, and user-focused thinking. Each one represents a solved challenge — from interface performance to user experience.",
+  "projects-visit-button": "Open Project",
+
+  "project-1-title": "Website for BEST Eka UrFU",
+  "project-1-description": "Developed a responsive website for the European student organization BEST. Responsible for UI implementation, adaptive layout, and event management features.",
+  "project-2-title": "Online Whiteboard for BEST Eka UrFU",
+  "project-2-description": "Built a real-time collaborative whiteboard using Next.js, TypeScript, and Convex. Focused on interaction speed and smooth data synchronization.",
+  "project-3-title": "Website for Anastasia Karmatskaya",
+  "project-3-description": "Redesigned and improved a personal website based on a new client request. Optimized structure, visuals, and user flow for better engagement.",
 
   "contact-section-label": "Contact",
-  "contact-title": "Let's work together",
-  "contact-description": "I'm always open to new opportunities and collaborations. Whether you have a project idea or just want to say hello — feel free to reach out!",
+  "contact-title": "Let’s Work Together",
+  "contact-description": "I’m always open to new challenges and collaborations. If you’re looking for a developer who takes ownership, pays attention to detail, and turns design into a living product — feel free to reach out.",
   "contact-phone-label": "Phone",
   "contact-name-label": "Name",
   "contact-email-label": "Email",
   "contact-message-label": "Message",
   "contact-placeholder-name": "Your name",
   "contact-placeholder-email": "your@email.com",
-  "contact-placeholder-message": "Tell me about your project...",
-  "contact-submit": "Submit",
+  "contact-placeholder-message": "Tell me about your project or idea...",
+  "contact-submit": "Send",
   "contact-sending": "Sending...",
   "contact-success-title": "Message sent — thank you!",
-  "contact-success-description": "I will contact you shortly.",
-  "contact-error-title": "Failed to send message",
-  "contact-error-description": "Please try again or send an email directly",
+  "contact-success-description": "I’ll get back to you shortly.",
+  "contact-error-title": "Message failed to send",
+  "contact-error-description": "Please try again or contact me directly via email.",
 
   "form": {
-    "error-title": "Please check the form — there are some errors"
+    "error-title": "Please check the form — some fields contain errors"
   },
   "success": {
     "title": "Message sent — thank you!",
-    "description": "I will contact you shortly."
+    "description": "I’ll get back to you shortly."
   },
   "errors": {
     "submit-failed": {
       "title": "Failed to send message",
-      "description": "Please try again or send an email directly"
+      "description": "Please try again or contact me directly via email."
     },
     "network": {
       "title": "Network error",
-      "description": "Check the connection and try again"
+      "description": "Check your connection and try again."
     }
   },
 
   "validation": {
     "name": {
       "required": "Enter your name",
-      "short": "Name must contain at least 2 characters",
+      "short": "The name must contain at least 2 characters",
       "long": "The name is too long"
     },
     "email": {
-      "required": "Enter your email",
+      "required": "Enter your email address",
       "invalid": "Invalid email format"
     },
     "message": {
