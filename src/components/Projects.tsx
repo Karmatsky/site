@@ -18,24 +18,24 @@ export default function Projects() {
     () => [
       {
         id: "p1",
-        title: t("project-1-title"),
-        description: t("project-1-description"),
+        title: t("projects.items.project-1.title"),
+        description: t("projects.items.project-1.description"),
         tags: ["HTML", "TailwindCSS", "JavaScript"],
         image: "/urfubestru.webp",
         link: "https://urfubest.ru",
       },
       {
         id: "p2",
-        title: t("project-2-title"),
-        description: t("project-2-description"),
+        title: t("projects.items.project-2.title"),
+        description: t("projects.items.project-2.description"),
         tags: ["Next.js", "TypeScript", "Convex", "Clerk"],
         image: "/whiteboard.webp",
         link: "https://eka-urfu-board.vercel.app/",
       },
       {
         id: "p3",
-        title: t("project-3-title"),
-        description: t("project-3-description"),
+        title: t("projects.items.project-3.title"),
+        description: t("projects.items.project-3.description"),
         tags: ["Low-code", "Tilda"],
         image: "/karmatskayaru.webp",
         link: "https://karmatskaya.ru/",
@@ -72,10 +72,10 @@ export default function Projects() {
           viewport={{ once: true }}
         >
           <p className="text-xs uppercase tracking-widest text-slate-500 mb-3">
-            {t("projects-section-label")}
+            {t("projects.section-label")}
           </p>
           <h2 className="text-3xl md:text-4xl font-semibold text-slate-900">
-            {t("projects-title")}
+            {t("projects.title")}
           </h2>
         </motion.div>
 
@@ -231,7 +231,7 @@ export default function Projects() {
                           className="inline-flex items-center justify-center rounded-md bg-[#ffdd2d] text-black px-6 py-3 text-xs font-normal shadow-sm hover:bg-[#f2d22b] transition-colors"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          {t("projects-visit-button")}
+                          {t("projects.visit-button")}
                         </a>
                       </div>
                     ) : null}

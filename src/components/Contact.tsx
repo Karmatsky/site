@@ -159,13 +159,13 @@ export default function Contact() {
             viewport={{ once: true }}
           >
             <p className="text-xs uppercase tracking-widest text-slate-500 mb-3">
-              {t("contact-section-label")}
+              {t("contact.section-label")}
             </p>
             <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 mb-6">
-              {t("contact-title")}
+              {t("contact.title")}
             </h2>
             <p className="text-slate-700 leading-relaxed mb-8">
-              {t("contact-description")}
+              {t("contact.description")}
             </p>
 
             <div className="space-y-4">
@@ -247,7 +247,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-slate-900">
-                    {t("contact-phone-label")}
+                    {t("contact.labels.phone")}
                   </p>
                   <a
                     href="tel:+79122121176"
@@ -306,7 +306,7 @@ export default function Contact() {
                   htmlFor="email"
                   className="block text-sm font-medium text-slate-700 mb-2"
                 >
-                  {t("contact-email-label")}
+                  {t("contact.labels.email")}
                 </label>
                 <input
                   ref={emailRef}
@@ -341,7 +341,7 @@ export default function Contact() {
                   htmlFor="message"
                   className="block text-sm font-medium text-slate-700 mb-2"
                 >
-                  {t("contact-message-label")}
+                  {t("contact.labels.message")}
                 </label>
                 <textarea
                   ref={messageRef}
@@ -385,7 +385,9 @@ export default function Contact() {
                   submitting ? "opacity-60 pointer-events-none" : ""
                 }`}
               >
-                {submitting ? t("contact-sending") : t("contact-submit")}
+                {submitting
+                  ? t("contact.buttons.sending")
+                  : t("contact.buttons.submit")}
               </button>
             </form>
           </motion.div>

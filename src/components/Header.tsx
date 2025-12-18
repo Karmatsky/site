@@ -14,9 +14,9 @@ const Header: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>("");
 
   const navItems: NavItem[] = [
-    { name: t("header-about"), href: "#about" },
-    { name: t("header-projects"), href: "#projects" },
-    { name: t("header-contact"), href: "#contact" },
+    { name: t("header.about"), href: "#about" },
+    { name: t("header.projects"), href: "#projects" },
+    { name: t("header.contact"), href: "#contact" },
   ];
 
   useEffect(() => {

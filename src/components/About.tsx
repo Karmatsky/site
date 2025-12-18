@@ -21,16 +21,16 @@ export default function About() {
             viewport={{ once: true }}
           >
             <p className="text-xs uppercase tracking-widest text-slate-500 mb-3">
-              {t("about-title")}
+              {t("about.title")}
             </p>
             <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 mb-4">
-              {t("about-subtitle")}
+              {t("about.subtitle")}
             </h2>
             <p className="text-slate-700 leading-relaxed mb-4">
-              {t("about-description-p-1")}
+              {t("about.description.paragraph-1")}
             </p>
             <p className="text-slate-700 leading-relaxed mb-6">
-              {t("about-description-p-2")}
+              {t("about.description.paragraph-2")}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3">
@@ -38,13 +38,13 @@ export default function About() {
                 href="#projects"
                 className="inline-flex items-center justify-center rounded-md bg-[#ffdd2d] text-black px-6 py-3 text-xs font-normal shadow-sm hover:bg-[#f2d22b] transition-colors"
               >
-                {t("about-description-view-projects-button")}
+                {t("about.button.view-projects")}
               </a>
               <a
                 href="#contact"
                 className="inline-flex items-center justify-center rounded-md border border-slate-300 text-[#126df7] px-6 py-3 text-xs font-normal hover:border-slate-400 transition-colors"
               >
-                {t("about-description-contact-me-button")}
+                {t("about.button.contact-me")}
               </a>
             </div>
           </motion.div>
