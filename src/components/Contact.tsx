@@ -1,7 +1,7 @@
-import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
+import { useForm } from "react-hook-form";
 
 type FormData = {
   name: string;
@@ -9,106 +9,27 @@ type FormData = {
   message: string;
 };
 
-type FormErrors = Partial<Record<keyof FormData, string>>;
-
 export default function Contact() {
   const { t } = useTranslation();
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [errors, setErrors] = useState<FormErrors>({});
-  const [submitting, setSubmitting] = useState(false);
 
-  const nameRef = useRef<HTMLInputElement | null>(null);
-  const emailRef = useRef<HTMLInputElement | null>(null);
-  const messageRef = useRef<HTMLTextAreaElement | null>(null);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+    watch,
+  } = useForm<FormData>({
+    defaultValues: { name: "", email: "", message: "" },
+    mode: "onBlur",
+  });
 
   const FORMSPREE_ENDPOINT = `https://formspree.io/f/${
     import.meta.env.VITE_FORMSPREE_ID
   }`;
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const messageLength = watch("message", "").length;
 
-  const validateField = (
-    name: keyof FormData,
-    value: string
-  ): string | null => {
-    switch (name) {
-      case "name": {
-        const trimmed = value.trim();
-        if (!trimmed) return t("validation.name.required");
-        if (trimmed.length < 2) return t("validation.name.short");
-        if (trimmed.length > 60) return t("validation.name.long");
-        return null;
-      }
-
-      case "email": {
-        const trimmed = value.trim();
-        if (!trimmed) return t("validation.email.required");
-        if (!emailRegex.test(trimmed)) return t("validation.email.invalid");
-        return null;
-      }
-
-      case "message": {
-        const trimmed = value.trim();
-        if (!trimmed) return t("validation.message.required");
-        if (trimmed.length < 10) return t("validation.message.short");
-        if (trimmed.length > 2000) return t("validation.message.long");
-        return null;
-      }
-
-      default:
-        return null;
-    }
-  };
-
-  const validateAll = (data: FormData) => {
-    const newErrors: FormErrors = {};
-    (Object.keys(data) as (keyof FormData)[]).forEach((key) => {
-      const err = validateField(key, data[key]);
-      if (err) newErrors[key] = err;
-    });
-    setErrors(newErrors);
-    return newErrors;
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-
-    setErrors((prev) => ({
-      ...prev,
-      [name]: validateField(name as keyof FormData, value) || undefined,
-    }));
-  };
-
-  const focusFirstError = (errs: FormErrors) => {
-    if (!errs) return;
-    if (errs.name) nameRef.current?.focus();
-    else if (errs.email) emailRef.current?.focus();
-    else if (errs.message) messageRef.current?.focus();
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (submitting) return;
-
-    const found = validateAll(formData);
-    const hasErrors = Object.keys(found).length > 0;
-    if (hasErrors) {
-      toast.error(t("form.error-title"), {
-        description: Object.values(found)[0],
-      });
-      focusFirstError(found);
-      return;
-    }
-
-    setSubmitting(true);
-
+  const onSubmit = async (data: FormData) => {
     try {
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
@@ -116,18 +37,15 @@ export default function Contact() {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(data),
       });
 
       if (res.ok) {
         toast.success(t("success.title"), {
           description: t("success.description"),
         });
-        setFormData({ name: "", email: "", message: "" });
-        setErrors({});
+        reset();
       } else {
-        const data = await res.json().catch(() => null);
-        console.error("Formspree error response:", data || res.statusText);
         toast.error(t("errors.submit-failed.title"), {
           description: t("errors.submit-failed.description"),
         });
@@ -137,13 +55,11 @@ export default function Contact() {
       toast.error(t("errors.network.title"), {
         description: t("errors.network.description"),
       });
-    } finally {
-      setSubmitting(false);
     }
   };
 
   const inputBaseClass =
-    "w-full px-4 py-3 rounded-lg border transition-colors outline-none";
+    "w-full px-4 py-3 rounded-lg border transition-colors outline-none bg-[#f2f4f7] focus:bg-white focus:border-black border-transparent";
 
   return (
     <section
@@ -190,6 +106,7 @@ export default function Contact() {
                     href="https://github.com/Karmatsky"
                     className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Karmatsky
                   </a>
@@ -266,7 +183,11 @@ export default function Contact() {
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <form onSubmit={handleSubmit} className="space-y-3" noValidate>
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="space-y-3"
+              noValidate
+            >
               <div>
                 <label
                   htmlFor="name"
@@ -275,21 +196,22 @@ export default function Contact() {
                   {t("contact.labels.name")}
                 </label>
                 <input
-                  ref={nameRef}
-                  type="text"
                   id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  onBlur={(e) =>
-                    setErrors((prev) => ({
-                      ...prev,
-                      name: validateField("name", e.target.value) || undefined,
-                    }))
-                  }
+                  type="text"
+                  {...register("name", {
+                    required: t("validation.name.required"),
+                    minLength: {
+                      value: 2,
+                      message: t("validation.name.short"),
+                    },
+                    maxLength: {
+                      value: 60,
+                      message: t("validation.name.long"),
+                    },
+                  })}
                   aria-invalid={!!errors.name}
                   aria-describedby={errors.name ? "name-error" : undefined}
-                  className={`${inputBaseClass} bg-[#f2f4f7] focus:bg-white focus:border-black border-transparent ${
+                  className={`${inputBaseClass} ${
                     errors.name
                       ? "bg-[#fee0e0] border-red-500 focus:border-red-600"
                       : ""
@@ -297,7 +219,7 @@ export default function Contact() {
                   placeholder={t("contact.placeholders.name")}
                 />
                 <p id="name-error" className="text-xs text-red-600 mt-2 h-5">
-                  {errors.name || ""}
+                  {errors.name?.message || ""}
                 </p>
               </div>
 
@@ -309,22 +231,18 @@ export default function Contact() {
                   {t("contact.labels.email")}
                 </label>
                 <input
-                  ref={emailRef}
-                  type="email"
                   id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  onBlur={(e) =>
-                    setErrors((prev) => ({
-                      ...prev,
-                      email:
-                        validateField("email", e.target.value) || undefined,
-                    }))
-                  }
+                  type="email"
+                  {...register("email", {
+                    required: t("validation.email.required"),
+                    pattern: {
+                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                      message: t("validation.email.invalid"),
+                    },
+                  })}
                   aria-invalid={!!errors.email}
                   aria-describedby={errors.email ? "email-error" : undefined}
-                  className={`${inputBaseClass} bg-[#f2f4f7] focus:bg-white focus:border-black border-transparent ${
+                  className={`${inputBaseClass} ${
                     errors.email
                       ? "bg-[#fee0e0] border-red-500 focus:border-red-600"
                       : ""
@@ -332,7 +250,7 @@ export default function Contact() {
                   placeholder={t("contact.placeholders.email")}
                 />
                 <p id="email-error" className="text-xs text-red-600 mt-2 h-5">
-                  {errors.email || ""}
+                  {errors.email?.message || ""}
                 </p>
               </div>
 
@@ -344,24 +262,24 @@ export default function Contact() {
                   {t("contact.labels.message")}
                 </label>
                 <textarea
-                  ref={messageRef}
                   id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  onBlur={(e) =>
-                    setErrors((prev) => ({
-                      ...prev,
-                      message:
-                        validateField("message", e.target.value) || undefined,
-                    }))
-                  }
+                  rows={6}
+                  {...register("message", {
+                    required: t("validation.message.required"),
+                    minLength: {
+                      value: 10,
+                      message: t("validation.message.short"),
+                    },
+                    maxLength: {
+                      value: 2000,
+                      message: t("validation.message.long"),
+                    },
+                  })}
                   aria-invalid={!!errors.message}
                   aria-describedby={
                     errors.message ? "message-error" : undefined
                   }
-                  rows={6}
-                  className={`${inputBaseClass} bg-[#f2f4f7] focus:bg-white focus:border-black border-transparent resize-none ${
+                  className={`${inputBaseClass} resize-none ${
                     errors.message
                       ? "bg-[#fee0e0] border-red-500 focus:border-red-600"
                       : ""
@@ -370,22 +288,20 @@ export default function Contact() {
                 />
                 <div className="flex justify-between items-center mt-2">
                   <p id="message-error" className="text-xs text-red-600 h-5">
-                    {errors.message || ""}
+                    {errors.message?.message || ""}
                   </p>
-                  <p className="text-xs text-slate-500">
-                    {formData.message.length}/2000
-                  </p>
+                  <p className="text-xs text-slate-500">{messageLength}/2000</p>
                 </div>
               </div>
 
               <button
                 type="submit"
-                disabled={submitting}
+                disabled={isSubmitting}
                 className={`cursor-pointer w-full bg-[#ffdd2d] text-black py-3 px-6 rounded-lg font-normal hover:bg-[#f2d22b] transition-colors focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2 ${
-                  submitting ? "opacity-60 pointer-events-none" : ""
+                  isSubmitting ? "opacity-60 pointer-events-none" : ""
                 }`}
               >
-                {submitting
+                {isSubmitting
                   ? t("contact.buttons.sending")
                   : t("contact.buttons.submit")}
               </button>
