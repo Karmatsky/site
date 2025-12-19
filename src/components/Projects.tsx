@@ -32,14 +32,6 @@ export default function Projects() {
         image: "/whiteboard.webp",
         link: "https://eka-urfu-board.vercel.app/",
       },
-      {
-        id: "p3",
-        title: t("projects.items.project-3.title"),
-        description: t("projects.items.project-3.description"),
-        tags: ["Low-code", "Tilda"],
-        image: "/karmatskayaru.webp",
-        link: "https://karmatskaya.ru/",
-      },
     ],
     []
   );
@@ -117,9 +109,6 @@ export default function Projects() {
                   <h3 className="text-base font-semibold text-slate-900 mb-1">
                     {p.title}
                   </h3>
-                  {/* <p className="text-sm text-slate-600 line-clamp-1">
-                    {p.description}
-                  </p> */}
                   <div className="mt-3 flex flex-wrap gap-2">
                     {p.tags.map((t) => (
                       <span

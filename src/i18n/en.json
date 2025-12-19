@@ -30,10 +30,6 @@
       "project-2": {
         "title": "Online Whiteboard for BEST Eka UrFU",
         "description": "Built a real-time collaborative whiteboard using Next.js, TypeScript, and Convex. Focused on interaction speed and smooth data synchronization."
-      },
-      "project-3": {
-        "title": "Website for Anastasia Karmatskaya",
-        "description": "Redesigned and improved a personal website based on a new client request. Optimized structure, visuals, and user flow for better engagement."
       }
     }
   },
