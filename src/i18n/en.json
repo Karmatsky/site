@@ -24,11 +24,11 @@
     "visit-button": "Open Project",
     "items": {
       "project-1": {
-        "title": "Website for BEST Eka UrFU",
+        "title": "Website for BEST Ekaterinburg UrFU",
         "description": "Developed a responsive website for the European student organization BEST."
       },
       "project-2": {
-        "title": "Online Whiteboard for BEST Eka UrFU",
+        "title": "Whiteboard for BEST Ekaterinburg UrFU",
         "description": "Built a real-time collaborative whiteboard using Next.js, TypeScript, and Convex. Focused on interaction speed and smooth data synchronization."
       }
     }

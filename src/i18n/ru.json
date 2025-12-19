@@ -24,11 +24,11 @@
     "visit-button": "Открыть проект",
     "items": {
       "project-1": {
-        "title": "Сайт для BEST Eka UrFU",
+        "title": "Сайт для BEST Ekaterinburg UrFU",
         "description": "Разработка адаптивного сайта для европейской студенческой организации BEST."
       },
       "project-2": {
-        "title": "Онлайн-доска для BEST Eka UrFU",
+        "title": "Онлайн-доска для BEST Ekaterinburg UrFU",
         "description": "Интерактивная онлайн-доска с возможностью совместной работы в реальном времени. Использованы Next.js, TypeScript и Convex для синхронизации данных."
       }
     }
