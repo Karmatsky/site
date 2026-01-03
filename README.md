@@ -62,43 +62,28 @@ src/
 
 #### Installation
 
-To set up this project locally, follow these steps:
-
 ```bash
-# Clone the repository
 git clone <repository-url>
-
-# Install dependencies
 npm install
-
-# Start development server
 npm run dev
 ```
 
-The development server will run at `http://localhost:5173`
+Development server runs at `http://localhost:5173`
 
-#### Build for Production
-
-When I'm ready to deploy, I run:
+#### Build
 
 ```bash
 npm run build
 ```
 
-This creates optimized production files in the `dist/` directory.
+Production files go to `dist/` directory.
 
-#### Preview Production Build
+#### Commands
 
-```bash
-npm run preview
-```
-
-### Available Scripts
-
-- `npm run dev` - Start the development server with hot module replacement
-- `npm run build` - Build TypeScript and create production bundle
-- `npm run lint` - Run ESLint to check code quality
-- `npm run preview` - Preview the production build locally
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run lint` - Check code quality
+- `npm run preview` - Preview production build
 
 ### Language Support
 
@@ -115,14 +100,16 @@ I can easily customize this site:
 
 ### Deployment
 
-I can deploy my site to any static hosting service:
+Live on [Vercel](http://karmatsky.vercel.app/).
+
+Can be deployed to any static hosting:
 
 - Vercel
 - Netlify
 - GitHub Pages
-- AWS S3 + CloudFront
+- AWS S3
 
-Simply push the contents of the `dist/` folder after building.
+Push `dist/` folder after building.
 
 ---
 
@@ -188,43 +175,28 @@ src/
 
 #### Установка
 
-Чтобы установить этот проект локально, следуйте этим шагам:
-
 ```bash
-# Клонируйте репозиторий
 git clone <url-репозитория>
-
-# Установите зависимости
 npm install
-
-# Запустите сервер разработки
 npm run dev
 ```
 
-Сервер разработки будет запущен на `http://localhost:5173`
+Сервер разработки на `http://localhost:5173`
 
-#### Сборка для продакшена
-
-Когда я готов развернуть сайт, я запускаю:
+#### Сборка
 
 ```bash
 npm run build
 ```
 
-Это создает оптимизированные файлы продакшена в папке `dist/`.
+Продакшен файлы в папке `dist/`.
 
-#### Просмотр сборки для продакшена
+#### Команды
 
-```bash
-npm run preview
-```
-
-### Доступные скрипты
-
-- `npm run dev` - Запустить сервер разработки с горячей перезагрузкой модулей
-- `npm run build` - Собрать TypeScript и создать bundle для продакшена
-- `npm run lint` - Запустить ESLint для проверки качества кода
-- `npm run preview` - Просмотреть сборку для продакшена локально
+- `npm run dev` - Запустить сервер разработки
+- `npm run build` - Собрать для продакшена
+- `npm run lint` - Проверить код
+- `npm run preview` - Просмотреть продакшен
 
 ### Поддержка языков
 
@@ -241,11 +213,13 @@ npm run preview
 
 ### Развертывание
 
-Я могу развернуть свой сайт на любом сервисе статического хостинга:
+Живет на [Vercel](http://karmatsky.vercel.app/).
+
+Можно развернуть на:
 
 - Vercel
 - Netlify
 - GitHub Pages
-- AWS S3 + CloudFront
+- AWS S3
 
-Просто выкладываю содержимое папки `dist/` после сборки.
+После сборки выложить папку `dist/`.
