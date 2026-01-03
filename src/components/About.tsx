@@ -65,7 +65,7 @@ export default function About() {
                 {!imageError ? (
                   <img
                     src="/SK.webp"
-                    loading="lazy"
+                    loading="eager"
                     alt="Portrait of Savely Karmatsky"
                     className="h-full w-full object-cover"
                     onError={() => setImageError(true)}
