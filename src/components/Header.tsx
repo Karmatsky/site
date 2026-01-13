@@ -73,7 +73,7 @@ const Header: React.FC = () => {
 
   return (
     <header className="fixed top-4 left-0 right-0 z-50 w-full max-w-6xl mx-auto px-6">
-      <div className="bg-white/80 backdrop-blur-xl border border-white/20 shadow-xl rounded-2xl relative z-50">
+      <div className="bg-white border-2 border-slate-200 shadow-2xs rounded-2xl relative z-50">
         <div className="px-6 py-3 flex justify-between items-center">
           <motion.a
             href="#"
