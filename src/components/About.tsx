@@ -36,13 +36,13 @@ export default function About() {
             <div className="flex flex-col sm:flex-row gap-3">
               <a
                 href="#projects"
-                className="inline-flex items-center justify-center rounded-md bg-[#ffdd2d] text-black px-6 py-3 text-xs font-normal shadow-sm hover:bg-[#f2d22b] transition-colors"
+                className="min-w-[120px] min-h-[40px] inline-flex items-center justify-center rounded-md bg-[#ffdd2d] text-black px-6 py-3 text-xs font-normal shadow-sm hover:bg-[#f2d22b] transition-colors"
               >
                 {t("about.button.view-projects")}
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-md border border-slate-300 text-[#126df7] px-6 py-3 text-xs font-normal hover:border-slate-400 transition-colors"
+                className="min-w-[120px] min-h-[40px] inline-flex items-center justify-center rounded-md border border-slate-300 text-[#126df7] px-6 py-3 text-xs font-normal hover:border-slate-400 transition-colors"
               >
                 {t("about.button.contact-me")}
               </a>

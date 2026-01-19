@@ -33,13 +33,13 @@ export default function Projects() {
         link: "https://eka-urfu-board.vercel.app/",
       },
     ],
-    []
+    [],
   );
 
   const [activeId, setActiveId] = useState<string | null>(null);
   const active = useMemo(
     () => projects.find((p) => p.id === activeId) || null,
-    [activeId, projects]
+    [activeId, projects],
   );
 
   useEffect(() => {
@@ -217,7 +217,7 @@ export default function Projects() {
                           href={active.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center rounded-md bg-[#ffdd2d] text-black px-6 py-3 text-xs font-normal shadow-sm hover:bg-[#f2d22b] transition-colors"
+                          className="min-w-[120px] min-h-[40px] inline-flex items-center justify-center rounded-md bg-[#ffdd2d] text-black px-6 py-3 text-xs font-normal shadow-sm hover:bg-[#f2d22b] transition-colors"
                           onClick={(e) => e.stopPropagation()}
                         >
                           {t("projects.visit-button")}
